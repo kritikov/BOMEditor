@@ -1,0 +1,114 @@
+﻿BomEditor - Bill of Material (BOM) Creation and Management in the Browser
+
+version 1.0.0
+
+BomEditor is a JavaScript class that allows the creation and management of a Bill of Material (BOM) in the browser. The library is designed 
+to simplify the process of designing, editing and calculating the required materials for construction or production projects.
+
+
+General
+
+BomEditor provides two types of functionality: the editor where the product is designed with drag and drop functions, and the views 
+where the various results resulting from the design are presented, such as the total material requirements. There is a history to allow undo / redo functions 
+and provides support in two languages, English and Greek.
+
+The basic components of the BOM in the BomEditor design are three:
+
+materials: the raw materials used during the production process to create a component or the final product.
+returns: materials created during the production process without being needed in the next production phase but possibly needing code to be utilized differently
+components: derived by-products created during a production process phase and needed for the next phase. They can use materials or other components.
+
+
+Usage
+
+BomEditor includes two files, one in javascript and one in css. The javascript includes the BomEditor class and its use is done by declaring an instance, 
+passing as a parameter the div in which the editor or viewer will be created. It is possible to use multiple instances on the same page so that there are 
+different editors if this is desired. The class uses the be- prefix to declare the various css classes included in the corresponding file.
+
+
+Creating an instance
+
+To use BomEditor, we create an instance of the BomEditor class:
+
+var bomEditor = new BomEditor(options);
+
+where options includes the following properties:
+
+	element: the div that will be used to display the editor (required)
+	language: the language that will be used in the interface and can take two values: 'EN' or 'GR' (default is 'EN').
+	decimals: the number of decimals to be displayed (default is 2).
+	numberFormat: the number formatting as used by the toLocaleString method of javascript (default is 'el-GR').
+	allowAlertMessages: allows or not the display of messages using alert in various cases when an action is not performed correctly by the user
+	attachExpandingEvent: allows the addition of general events to the body of the document that must be declared only once. In case there is more than one 
+	BomEditor on a page, attachExpandingEvent must have a value of true only in the first one, and in the remaining instances it must have a value of false 
+	in order to avoid double declarations.
+
+
+BomEditor Public Methods
+
+newProduct(): creates a new BOM with a component at the root which is the final product.
+
+draw(bom): displays a new bom in the editor and is usually used when reading a product stored in a file. The bom consists of items of the form:
+
+	item = {
+		code: "<value>",
+		description: "<value>",
+		quantity: <value>,
+		unit: "<value>",
+		type: <value>,
+		scrap: <value>,
+		items: [],
+	}
+
+	where:
+
+	code: is the code of the component or material and can take any value.
+	description: the description of the part or material
+	quantity: the quantity required
+	unit: the unit of measurement (no picklist is used and can take any value)
+	type: the type of material (1 for part, 2 for material, 3 for return)
+	scrap: the percentage in % that will be discarded during the production process
+	items: a table containing the materials or parts needed to produce the specific part
+
+clear(): clears the editor
+
+undo(): moves the editor one step back
+
+redo(): moves the editor one step forward
+
+getBOM(): returns the bom contained in the editor in object format
+
+getBOMAsJson(): returns the bom contained in the editor in json format
+
+drawView(options): displays a view of the bom to check the results. The options include the following properties:
+
+	element: the div in which the view will appear
+	targetQuantity: the quantity of the product we want to build based on the bom
+	view: the desired view and can take one of the values ​​'partsHorView', 'requirementsHorView', 'compareScrapView, 'requirementsPerCodeView', 'requirementsPerRawView', 'requirementsVerView', 'requirementsTreeView'.
+
+	
+To use undo/redo, the BomEditor onHistoryChange event is used. As an example, we have the following:
+
+	// create an instance
+	var bomEditor = new BomEditor({ element: canvas, language: page.language, allowAlertMessages: true });
+
+	// create a new product
+	bomEditor.newProduct();
+
+	// activate the interface buttons when there is a change in the bomEditor history
+	let undoButton = document.getElementById("undo");
+	let redoButton = document.getElementById("redo");
+	bomEditor.onHistoryChange((event) => {
+		undoButton.disabled = !event.detail.undoEnabled;
+		redoButton.disabled = !event.detail.redoEnabled;
+	});
+
+	// method called by the undoButton click event when it is active
+	function undo() {
+		bomEditor.undo();
+	}
+
+	// method called by the redoButton click event when it is active
+	function redo() {
+		bomEditor.redo();
+	}

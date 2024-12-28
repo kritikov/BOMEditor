@@ -1,0 +1,522 @@
+
+.be-label {
+    font-weight: 600;
+    background-color: #E2E2E2;
+}
+.be-error {
+    border: 1px solid red;
+    background-color: #E2E2E2;
+}
+.be-unselectable {
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+.be-button {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background-image: linear-gradient(#FFFFFF, #9DA3B3);
+}
+.be-hidden{
+    display: none;
+}
+
+.be-canvas {
+    font-size: 14px;
+}
+.be-canvas table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.be-canvas div {
+    vertical-align: top;
+}
+
+
+/* ----------------- be-dialog-itemEditor --------------*/
+
+.be-dialog-itemEditor {
+    padding: 0;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px #373737;
+}
+.be-dialog-itemEditor-title {
+    background-image: linear-gradient(#868EA8, #5B657D);
+    border: 1px solid #B2B2B2;
+    border-radius: 2px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 400;
+    padding: 10px;
+    text-align: center;
+}
+.be-dialog-itemEditor table{
+    margin: 10px;
+}
+.be-dialog-itemEditor td{
+    padding: 3px;
+}
+.be-dialog-itemEditor td:first-child {
+    text-align: right;
+    color: #99005A;
+    font-size: 13px;
+}
+.be-dialog-itemEditor-tools{
+    text-align: center;
+    padding: 10px;
+}
+.be-dialog-itemEditor-message {
+    text-align: center;
+    color: red;
+    padding: 5px;
+}
+
+
+/* ----------------- horizontal tree --------------*/
+
+.be-horView {
+    padding: 5px 0px 0px 0px;
+    font-size: 12px;
+}
+.be-horView .be-part {
+    white-space: nowrap;
+    border-left: 1px solid #9C2C2B;
+}
+.be-horView .be-part:last-child {
+    border-left: none;
+}
+.be-horView .be-part:before {
+    position: relative;
+    height: 10px;
+    width: 15px;
+    border-bottom: 1px solid #9C2C2B;
+    content: "";
+    display: inline-block;
+}
+.be-horView .be-part:last-child:before {
+    border-left: 1px solid #9C2C2B;
+}
+.be-horView .be-part:first-child:before {
+    border-left: none;
+}
+.be-horView .be-parts {
+    display: inline-block;
+    margin-left: -3px;
+}
+.be-horView .be-part-data {
+    display: inline-block;
+    margin-bottom: 10px;
+    min-width: 100px;
+    background-color: #F4F4F4;
+    position: relative;
+    border: 1px solid gray;
+}
+.be-horView.simple .be-part-data {
+    white-space: normal;
+}
+
+
+/* ----------------- editor --------------*/
+
+.be-editor .be-part-header {
+    width: 100%;
+}
+.be-editor .be-part-header td:nth-child(1),
+.be-editor .be-part-header td:nth-child(2) {
+    width: 1px;
+}
+.be-editor .be-part-header td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 4px 6px 4px;
+    border: 1px solid gray;
+}
+.be-editor .be-part-header .be-toggleMenu {
+    width: 30px;
+    vertical-align: middle;
+    padding: 5px 8px 10px 8px;
+    font-size: 12px;
+    font-weight: 900;
+    color: red;
+}
+.be-editor .be-part-header .be-code {
+    background-color: #E3FFCE;
+    border-bottom: 1px solid gray;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-image: linear-gradient(#bdbdbd, #242424);
+    border-top: 1px solid #B4B4B4;
+    text-shadow: 1px 1px black;
+    color: white;
+    cursor: pointer;
+}
+.be-editor .be-part-header .be-description {
+    color: #040D7B;
+    padding: 6px;
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 14px;
+}
+.be-editor .be-part-materials {
+    width: 100%;
+}
+.be-editor .be-part-materials td {
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 4px 4px 4px;
+    cursor: pointer;
+}
+.be-editor .be-material .be-materialRemove {
+    width: 12px;
+    font-size: 14px;
+    font-weight: 900;
+    color: red;
+}
+.be-editor .be-material .be-description {
+    text-align: left;
+}
+.be-editor .be-part-material .be-quantity {
+    text-align: right;
+}
+.be-editor .be-material.be-raw .be-description,
+.be-editor .be-material.be-raw .be-quantity {
+    color: #004F9D;
+}
+.be-editor .be-material.be-return .be-description,
+.be-editor .be-material.be-return .be-quantity {
+    color: #A60000;
+}
+.be-editor .be-material.be-selected .be-description {
+    background-color: #D7FFE1;
+}
+.be-editor .be-part-menu {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    background-color: white;
+    color: black;
+    box-shadow: 3px 3px 2px black;
+    padding: 0px;
+    border: 1px solid gray;
+    z-index: 100; 
+}
+.be-editor .be-part-menu li {
+    vertical-align: middle;
+    text-align: left;
+    padding: 8px 10px 10px 8px;
+    cursor: pointer;
+    font-size: 12px;        
+}
+.be-editor .be-part-menu li:not(:last-child) {
+    border-bottom: 1px solid #5A6B98;
+}
+.be-editor .be-part-menu li:hover {
+    background-color: #DDDDF4;
+}
+
+
+/* ---- views ------*/
+
+.be-view-title {
+    background-color: #5C2E4E;
+    color: white;
+    font-weight: 400;
+    padding: 8px 3px 8px 10px;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.be-view{
+    font-size: 14px;
+}
+.be-view table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.be-view div {
+    vertical-align: top;
+}
+
+
+/* ---- parts horizontal view ------*/
+
+.be-partsHorView .be-part-data {
+    text-align: center;
+}
+.be-partsHorView .be-code {
+    font-weight: 500;
+    background-color: #E3FFCE;
+    padding: 5px 3px 3px 3px;
+    border-bottom: 1px solid gray;
+    font-size: 14px;
+}
+.be-partsHorView .be-description {
+    color: #040D7B;
+    padding: 3px;
+    word-wrap: break-word;
+    white-space: normal;
+    padding: 5px;
+}
+
+
+/* ---------- requirements horizontal view --------------*/
+
+.be-requirementsHorView .be-part-data {
+    text-align: center;
+}
+.be-requirementsHorView .be-part-header {
+    width: 100%;
+}
+.be-requirementsHorView .be-part-header td{
+    border: 1px solid gray;
+    padding: 4px;
+}
+.be-requirementsHorView .be-part-header td.be-label {
+    background-color: #e0ebf2;
+    padding: 5px;
+}
+.be-requirementsHorView .be-part-header-code {
+    font-weight: 500;
+    background-color: #E3FFCE;
+    padding: 5px 3px 3px 3px;
+    font-size: 14px;
+}
+.be-requirementsHorView .be-part-header-description {
+    color: #040D7B;
+    padding: 3px;
+    word-wrap: break-word;
+    white-space: normal;
+    padding: 5px;
+}
+.be-requirementsHorView .be-part-materials {
+    width: 100%;
+}
+.be-requirementsHorView .be-part-materials td {
+    border: 1px solid gray;
+    padding: 4px;
+}
+.be-requirementsHorView .be-part-materials td.be-label {
+    background-color: #e0ebf2;
+    padding: 5px;
+}
+.be-requirementsHorView .be-material.be-raw td:not(.be-label){
+    color: #004F9D;
+}
+.be-requirementsHorView .be-material.be-return td:not(.be-label) {
+    color: #A60000;
+}
+
+
+/* ------- compare scrap view --------------*/
+
+.be-compareScrapView .be-part-data {
+    text-align: center;
+}
+.be-compareScrapView .be-part-header {
+    width: 100%;
+}
+.be-compareScrapView .be-part-header td{
+    border: 1px solid gray;
+    padding: 4px;
+}
+.be-compareScrapView .be-part-header td.be-label {
+    background-color: #e0ebf2;
+    padding: 5px;
+}
+.be-compareScrapView .be-part-header-code {
+    font-weight: 500;
+    background-color: #E3FFCE;
+    padding: 5px 3px 3px 3px;
+    font-size: 14px;
+}
+.be-compareScrapView .be-part-header-description {
+    color: #040D7B;
+    padding: 3px;
+    word-wrap: break-word;
+    white-space: normal;
+    padding: 5px;
+}
+.be-compareScrapView .be-part-materials {
+    width: 100%;
+}
+.be-compareScrapView .be-part-materials td {
+    border: 1px solid gray;
+    padding: 4px;
+}
+.be-compareScrapView .be-material.be-raw td:not(.be-label) {
+    color: #004F9D;
+}
+.be-compareScrapView .be-material.be-return td:not(.be-label) {
+    color: #A60000;
+}
+
+
+/* ------- requirements per code view --------------*/
+
+.be-requirementsPerCodeView th {
+    background-color: #EEDDFF;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+    border: 1px solid gray;
+    font-size: 14px;
+}
+.be-requirementsPerCodeView td {
+    background-color: white;
+    text-align: right;
+    vertical-align: middle;
+    padding: 4px;
+    border: 1px solid gray;
+    font-size: 13px;
+}
+.be-requirementsPerCodeView td.be-code {
+    color: black;
+    font-weight: 500;
+}
+.be-requirementsPerCodeView tr.be-part td:not(.be-code) {
+    color: #005500;
+}
+.be-requirementsPerCodeView tr.be-raw td:not(.be-code) {
+    color: #004F9D;
+}
+.be-requirementsPerCodeView tr.be-return td:not(.be-code) {
+    color: #A60000;
+}
+.be-requirementsPerCodeView td.be-description{
+    text-align: left;
+}
+.be-requirementsPerCodeView td.be-unit{
+    text-align: center;
+}
+
+
+/* ------- requirements per raw view --------------*/
+
+.be-requirementsPerRawView th {
+    background-color: #EEDDFF;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+    border: 1px solid gray;
+    font-size: 14px;
+}
+.be-requirementsPerRawView th.be-empty {
+    background-color: inherit;
+}
+.be-requirementsPerRawView td {
+    background-color: white;
+    text-align: right;
+    vertical-align: middle;
+    padding: 4px;
+    border: 1px solid gray;
+    font-size: 13px;
+}
+.be-requirementsPerRawView td.be-code {
+    color: black;
+    font-weight: 500;
+}
+.be-requirementsPerRawView td:not(.be-code) {
+    color: #004F9D;
+}
+.be-requirementsPerRawView td.be-description {
+    text-align: left;
+}
+.be-requirementsPerRawView td.be-unit {
+    text-align: center;
+}
+
+/* ------- requirements ver view --------------*/
+
+.be-requirementsVerView th {
+    background-color: #EEDDFF;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+    border: 1px solid gray;
+    font-size: 14px;
+}
+.be-requirementsVerView td.be-empty {
+    background-color: inherit;
+}
+.be-requirementsVerView td {
+    background-color: white;
+    text-align: right;
+    vertical-align: middle;
+    padding: 4px;
+    border: 1px solid gray;
+    font-size: 13px;
+}
+.be-requirementsVerView td.be-code {
+    color: black;
+    font-weight: 500;
+}
+.be-requirementsVerView td.be-description {
+    text-align: left;
+}
+.be-requirementsVerView td.be-unit {
+    text-align: center;
+}
+.be-requirementsVerView tr.be-part td {
+    background-color: #E3FFCE;
+    color: black;
+}
+.be-requirementsVerView tr.be-raw td:not(.be-code) {
+    color: #004F9D;
+}
+.be-requirementsVerView tr.be-return td:not(.be-code) {
+    color: #A60000;
+}
+
+
+/* ------- requirements tree view --------------*/
+
+.be-requirementsTreeView {
+    font-size: 12px;
+    background-color: #F4F4F4;
+}
+.be-requirementsTreeView .be-part {
+    padding-left: 2px;
+}
+.be-requirementsTreeView .be-part:hover > .be-part-header .be-code,
+.be-requirementsTreeView .be-material:hover > .be-code {
+    background-color: #E2C6FF;
+}
+.be-requirementsTreeView .be-part-header > div {
+    display: inline-block;
+    padding: 4px;
+    border-bottom: 1px solid #C0C0C0;
+}
+.be-requirementsTreeView .be-part-header> div.be-expand-materials {
+    cursor: pointer;
+    border: 1px solid #C0C0C0;
+    padding: 2px 4px 2px 4px;
+}
+.be-requirementsTreeView .be-part-header > div:not(.be-code) {
+    color: #005500;
+}
+.be-requirementsTreeView .be-part-materials {
+    margin-left: 12px;
+    padding: 4px;
+    border-left: 1px dotted #C0C0C0;
+}
+.be-requirementsTreeView .be-material>div {
+    display: inline-block;
+	padding: 6px 4px 6px 4px;
+	border-bottom: 1px solid #C0C0C0;
+}
+.be-requirementsTreeView .be-code {
+    color: black;
+    font-weight: 500;
+}
+.be-requirementsTreeView .be-material.be-raw > div:not(.be-code) {
+    color: #004F9D;
+}
+.be-requirementsTreeView .be-material.be-return > div:not(.be-code) {
+    color: #A60000;
+}
