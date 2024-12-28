@@ -1060,6 +1060,8 @@ class BomEditor {
 			items: []
 		}
 
+		dialog.remove();
+
 		if (item.type == "1") {
 			if (mode == "edit") {
 				this.#history.storeOld();
@@ -1132,7 +1134,6 @@ class BomEditor {
 			}
 		}
 
-		dialog.remove();
 	}
 
 
