@@ -17,5 +17,5 @@ BomEditor includes two files, one in javascript and one in css. The javascript i
 passing as a parameter the div in which the editor or viewer will be created. It is possible to use multiple instances on the same page so that there are 
 different editors if this is desired. The class uses the be- prefix to declare the various css classes included in the corresponding file.
 
-You can read more informations about using it in the 'manual EN.txt' file. The library has been used by the online application CS11 and you can see it 
+You can read technical informations in the 'manual EN.txt' file. The library has been used by the online application CS11 and you can see it 
 in action at https://nkode.gr/EN/CS11
