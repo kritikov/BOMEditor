@@ -1,5 +1,7 @@
 class BomEditor {
 
+	//version 1.0.1
+
 	// PROPERTIES
 
 	#canvas;
@@ -82,6 +84,17 @@ class BomEditor {
 
 	}
 
+	#codeCounter = {
+		partCode: 1000,
+		materialCode: 2000,
+		getNextPart: function () {
+			return ++this.partCode;
+		},
+		getNextRaw: function () {
+			return ++this.materialCode;
+		}
+	}
+
 	#resources = {
 		// A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 
@@ -117,7 +130,7 @@ class BomEditor {
 		moveUp: { GR: "μετακίνηση πάνω", EN: "move up" },
 		moveDown: { GR: "μετακίνηση κάτω", EN: "move down" },
 		moveOnSelf: { GR: "δεν μπορείτε να μετακινήσετε ένα εξάρτημα στον εαυτό του", EN: "you cannot move a part onto itself" },
-		moveOnChildren: { GR: "δεν μπορείτε να μετακινήσετε ένα εξάρτημα σε κάποιο από τα παιδιά μου, μόνο να το φτιάξετε αντίγραφο του", EN: "you cannot move a part to one of its childrens, only make a copy of it" },
+		moveOnChildren: { GR: "δεν μπορείτε να μετακινήσετε ένα εξάρτημα σε κάποιο από τα παιδιά του, μόνο να το φτιάξετε αντίγραφο του", EN: "you cannot move a part to one of its childrens, only make a copy of it" },
 		part: { GR: "εξάρτημα", EN: "part" },
 		partsHorViewTitle: { GR: "οριζόντιο δέντρο με τα εξαρτήματα", EN: "horizontal tree with components" },
 		quantity: { GR: "ποσότητα", EN: "quantity" },
@@ -424,7 +437,7 @@ class BomEditor {
 
 	///// PRIVATE METHODS
 
-	// Η μέθοδος που καλείται όταν κάνουμε κλικ στο canvas
+	// The method that is called when we click on the canvas
 	#handleClick(event) {
 
 		// Έλεγχος αν το κλικ έγινε για να ανοίξει το μενού των parts
@@ -598,14 +611,7 @@ class BomEditor {
 	// display the dialog to add a new part as children of the current part
 	#addPartAfter(part) {
 		this.#removePartMenu(part);
-		let item = {
-			code: "",
-			description: "",
-			type: 1,
-			quantity: "",
-			unit: "",
-			scrap: "",
-		}
+		let item = this.#getNewPart();
 		let html = this.#itemEditorDialogHTML(item, "add");
 		part.innerHTML += html;
 		let dialog = this.#canvas.querySelector(".be-dialog-itemEditor");
@@ -615,14 +621,7 @@ class BomEditor {
 	// display the dialog to add a new part as parent of the current part
 	#addPartBefore(part) {
 		this.#removePartMenu(part);
-		let item = {
-			code: "",
-			description: "",
-			type: 1,
-			quantity: "",
-			unit: "",
-			scrap: "",
-		}
+		let item = this.#getNewPart();
 		let html = this.#itemEditorDialogHTML(item, "addBefore");
 		part.innerHTML += html;
 		let dialog = this.#canvas.querySelector(".be-dialog-itemEditor");
@@ -632,14 +631,7 @@ class BomEditor {
 	// display the dialog to add a new material to a part
 	#addRaw(part) {
 		this.#removePartMenu(part);
-		let item = {
-			code: "",
-			description: "",
-			type: 2,
-			quantity: "",
-			unit: "",
-			scrap: "",
-		}
+		let item = this.#getNewRaw();
 		let html = this.#itemEditorDialogHTML(item, "add");
 		part.innerHTML += html;
 		let dialog = this.#canvas.querySelector(".be-dialog-itemEditor");
@@ -681,6 +673,36 @@ class BomEditor {
 			quantity: Number(part.querySelector(".be-part-header .be-quantity").innerHTML),
 			unit: part.querySelector(".be-part-header .be-unit").innerHTML,
 			scrap: Number(part.querySelector(".be-part-header .be-scrap").innerHTML),
+			items: []
+		}
+
+		return item;
+	}
+
+	// get a new part with default values
+	#getNewPart() {
+		let item = {
+			code: this.#codeCounter.getNextPart(),
+			description: "new part",
+			type: 1,
+			quantity: 1,
+			unit: "TM",
+			scrap: 0,
+			items: []
+		}
+
+		return item;
+	}
+
+	// get a new material with default values
+	#getNewRaw() {
+		let item = {
+			code: this.#codeCounter.getNextRaw(),
+			description: "new raw",
+			type: 2,
+			quantity: 10,
+			unit: "kg",
+			scrap: 5,
 			items: []
 		}
 

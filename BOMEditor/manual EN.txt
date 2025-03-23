@@ -1,6 +1,6 @@
 ﻿BomEditor - Bill of Material (BOM) Creation and Management in the Browser
 
-version 1.0.0
+version 1.0.1
 
 BomEditor is a JavaScript class that allows the creation and management of a Bill of Material (BOM) in the browser. The library is designed 
 to simplify the process of designing, editing and calculating the required materials for construction or production projects.
