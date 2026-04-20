@@ -10,7 +10,7 @@ and provides support in two languages, English and Greek.
 BomEditor includes two files, one in javascript and one in css. It is possible to use multiple instances on the same page so that there are 
 different editors if this is desired. You can read more technical informations in the 'manual EN.txt' file. 
 
-The library has been used by the online application CS11 and you can see it in action at https://nkode.gr/EN/CS11
+The library has been used by the online application CS11 and you can see it in action at https://nkode.gr/EN/tools/bom-editor
 
 <img width="1307" height="784" alt="image" src="https://github.com/user-attachments/assets/eb4d2fc7-b3ce-4759-8da9-a232aaf87c2e" />
 <img width="1304" height="449" alt="image" src="https://github.com/user-attachments/assets/881d70bb-35df-454b-97ae-359fb6a0d0e6" />
